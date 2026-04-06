@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Navbar from '@/components/Navbar.vue';
+import stareviewLogo from '/public/logo_horizontal_bg_dark.svg';
 import { ref } from 'vue'
 
 interface Project {
@@ -9,15 +10,17 @@ interface Project {
     technologies: string[]
     githubUrl?: string
     liveUrl?: string
+    image?: string
 }
 
 const projects = ref<Project[]>([
     {
         id: 1,
-        title: 'Project Example 1',
-        description: 'This is a test project description. Replace this with your real project details.',
-        technologies: ['Vue.js', 'TypeScript', 'Vite'],
-        githubUrl: 'https://github.com'
+        title: 'Em desenvolvimento',
+        description: 'Aplicação web para resenhas literárias com integração social e gamificação. Permite aos usuários compartilhar opiniões sobre livros, interagir com outros leitores e descobrir novas leituras.',
+        technologies: ['Vue.js', 'TypeScript', 'Vite', 'Tailwind CSS'],
+        githubUrl: 'https://github.com/EstherAzevedo/stareview-frontend',
+        image: stareviewLogo
     },
     {
         id: 2,
@@ -48,6 +51,7 @@ const projects = ref<Project[]>([
             <div v-for="project in projects" :key="project.id" class="project-card">
                 <div class="card-content">
                     <h2>{{ project.title }}</h2>
+                    <img v-if="project.image" :src="project.image" alt="Project image" class="project-image" />
                     <p class="description">{{ project.description }}</p>
 
                     <div class="technologies">
