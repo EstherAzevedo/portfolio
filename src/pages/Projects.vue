@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Navbar from '@/components/Navbar.vue';
 import stareviewLogo from '/public/logo_horizontal_bg_dark.svg';
+import phpLogo from '/public/php_elefante.png';
 import { ref } from 'vue'
 
 interface Project {
@@ -24,10 +25,11 @@ const projects = ref<Project[]>([
     },
     {
         id: 2,
-        title: 'Project Example 2',
-        description: 'Another example project. Add your own project information here.',
-        technologies: ['React', 'Node.js', 'MongoDB'],
-        githubUrl: 'https://github.com'
+        title: 'PHP Auth System',
+        description: 'O projeto implementa funcionalidades essenciais de autenticação, incluindo cadastro, login, logout, gerenciamento de sessões, páginas protegidas e armazenamento seguro de senhas utilizando password_hash() e password_verify().',
+        technologies: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript', 'Apache'],
+        githubUrl: 'https://github.com/EstherAzevedo/php-auth-system.git',
+        image: phpLogo
     },
     {
         id: 3,
@@ -152,6 +154,14 @@ h1 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: #f5f6f7;
+}
+
+.project-image {
+    display: block;
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    margin: 0 0 1.5rem;
 }
 
 .description {
