@@ -23,7 +23,7 @@ import Navbar from '@/components/Navbar.vue'
 
                 <div class="actions">
                     <RouterLink to="/projects" class="button primary">
-                        Explore my work <span>↗</span>
+                        Some projects <span>↗</span>
                     </RouterLink>
 
                     <RouterLink to="/aboutme" class="button secondary">
@@ -38,6 +38,10 @@ import Navbar from '@/components/Navbar.vue'
 
                     <a href="https://linkedin.com/in/SEU-USUARIO" target="_blank" rel="noopener noreferrer">
                         LinkedIn ↗
+                    </a>
+                    <a href="https://wa.me/5585991781234?text=Hello%20Esther!%20I%20found%20your%20portfolio."
+                        target="_blank" rel="noopener noreferrer">
+                        WhatsApp ↗
                     </a>
                 </div>
             </section>
@@ -166,11 +170,12 @@ h1 span {
     width: 340px;
 }
 
+
 .photo-frame {
     position: relative;
     padding: 10px;
     background: #e7dfc8;
-    border-radius: 170px 170px 12px 12px;
+    border-radius: 12px;
     box-shadow: 14px 14px 0 #e8c4b3;
 }
 
@@ -180,8 +185,9 @@ h1 span {
     height: 420px;
     object-fit: cover;
     object-position: center 35%;
-    border-radius: 160px 160px 7px 7px;
+    border-radius: 6px;
 }
+
 
 .photo-label {
     display: flex;
