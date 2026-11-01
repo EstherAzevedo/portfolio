@@ -124,10 +124,6 @@ function closeMenu() {
 
 /* Mobile */
 @media (max-width: 768px) {
-    .home {
-        padding-top: 1000px;
-    }
-
     .nav-links {
         display: none;
     }

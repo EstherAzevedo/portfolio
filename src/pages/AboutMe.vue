@@ -347,7 +347,7 @@ const interests = [
 
 @media (max-width: 760px) {
     .about {
-        padding: 3rem 1.25rem;
+        padding: 6rem 1.25rem 3.5rem;
     }
 
     .page-heading {

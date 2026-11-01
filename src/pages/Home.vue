@@ -32,11 +32,11 @@ import Navbar from '@/components/Navbar.vue'
                 </div>
 
                 <div class="socials">
-                    <a href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/EstherAzevedo" target="_blank" rel="noopener noreferrer">
                         GitHub ↗
                     </a>
 
-                    <a href="https://linkedin.com/in/SEU-USUARIO" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/esther-azevedo-aguiar/" target="_blank" rel="noopener noreferrer">
                         LinkedIn ↗
                     </a>
                     <a href="https://wa.me/5585991781234?text=Hello%20Esther!%20I%20found%20your%20portfolio."
@@ -209,7 +209,7 @@ h1 span {
 @media (max-width: 800px) {
     .hero {
         min-height: auto;
-        padding: 48px 24px 56px;
+        padding: 6rem 24px 56px;
         flex-direction: column-reverse;
         align-items: stretch;
         gap: 44px;

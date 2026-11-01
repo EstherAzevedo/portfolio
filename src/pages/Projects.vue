@@ -306,7 +306,7 @@ const projects = ref<Project[]>([
 
 @media (max-width: 760px) {
     .projects {
-        padding: 3.5rem 1.25rem;
+        padding: 6rem 1.25rem 3.5rem;
     }
 
     .header {
