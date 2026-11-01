@@ -1,358 +1,400 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Navbar from '@/components/Navbar.vue';
-
-interface Skill {
-    name: string
-    level: number
-}
+import Navbar from '@/components/Navbar.vue'
 
 interface Education {
     degree: string
     institution: string
     period: string
+    link?: string
+    linkLabel?: string
 }
 
-const skills = ref<Skill[]>([
-    { name: 'Vue.js', level: 75 },
-    { name: 'TypeScript', level: 70 },
-    { name: 'HTML/CSS', level: 85 },
-    { name: 'JavaScript', level: 80 },
-    { name: 'Android', level: 60 },
-    { name: 'Python', level: 65 }
-])
+const tccUrl = 'https://repositorio.ufc.br/handle/riufc/85783'
+const diplomaUrl = 'ADD_GOOGLE_DRIVE_DIPLOMA_URL_HERE'
 
-const education = ref<Education[]>([
+const education: Education[] = [
     {
         degree: 'Information Systems',
-        institution: 'Universidade Federal do Ceará (UFC)',
-        period: '2020 - 2025'
+        institution: 'Federal University of Ceará (UFC)',
+        period: '2020 – 2025',
+        link: tccUrl,
+        linkLabel: 'Read my undergraduate thesis'
     },
     {
         degree: 'Computer Technician',
-        institution: 'Instituto Federal de Educação, Ciência e Tecnologia do Ceará (IFCE)',
-        period: '2018 - 2022'
+        institution: 'Federal Institute of Education, Science and Technology of Ceará (IFCE)',
+        period: '2018 – 2022',
+        link: diplomaUrl,
+        linkLabel: 'View technical diploma'
     }
-])
+]
 
-const interests = ref<string[]>([
+const interests = [
+    'Software Development',
+    'Artificial Intelligence',
     'Web Development',
     'Mobile Development',
-    'UI/UX Design',
-    'Open Source',
+    'Technology in Education',
     'Reading',
     'Writing',
-    'Education'
-])
+    'Open Source'
+]
 </script>
 
 <template>
     <Navbar />
-    <section class="about">
+
+    <main class="about">
         <div class="container">
-            <div class="hero-section">
+            <header class="page-heading">
+                <h1>About Me<span>.</span></h1>
+            </header>
+
+            <section class="profile">
                 <div class="about-photo">
-                    <img src="/Esther_AboutMe.jpeg" alt="Esther Azevedo" />
+                    <img src="/Esther_AboutMe.jpeg" alt="Portrait of Esther Azevedo" />
                 </div>
+
                 <div class="hero-text">
-                    <h1>About Me</h1>
+                    <p class="intro-label">Hello, I'm Esther!</p>
+
+                    <h2>
+                        Software developer with a passion for
+                        <span>learning and creating.</span>
+                    </h2>
+
                     <p class="intro">
-                        Hi! I'm Esther Azevedo, a graduate in Information Systems from UFC and passionate about
-                        technology.
-                        I am especially focused on web development and have experience with modern frameworks like Vue,
-                        while also exploring mobile development with a particular interest in Android.
+                        I'm an Information Systems graduate from the Federal University
+                        of Ceará (UFC), interested in building useful software solutions
+                        and exploring new technologies.
                     </p>
+
                     <p class="intro">
-                        My goal is to combine creativity and logic to build impactful applications while constantly
-                        improving my skills. Beyond coding, I enjoy reading and writing in my free time, which helps me
-                        bring new perspectives and creativity into my work.
+                        My academic journey also sparked my interest in Artificial
+                        Intelligence and its applications in education. Outside
+                        technology, I enjoy reading and writing, activities that inspire
+                        my curiosity and creativity.
                     </p>
                 </div>
-            </div>
+            </section>
 
+            <section class="section">
+                <div class="section-heading">
+                    <span class="section-number">01</span>
+                    <div>
+                        <h2>Education</h2>
+                        <p class="section-subtitle">
+                            The academic journey behind my work.
+                        </p>
+                    </div>
+                </div>
 
-            <div class="sections">
-                <div class="section">
-                    <h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
-                        </svg>
-                        Education
-                    </h2>
-                    <div class="education-list">
-                        <div v-for="(edu, index) in education" :key="index" class="education-item">
+                <div class="education-list">
+                    <article v-for="(edu, index) in education" :key="edu.degree" class="education-item">
+                        <div class="education-marker">
+                            {{ index === 0 ? '01' : '02' }}
+                        </div>
+
+                        <div class="education-content">
+                            <p class="period">{{ edu.period }}</p>
                             <h3>{{ edu.degree }}</h3>
                             <p class="institution">{{ edu.institution }}</p>
-                            <p class="period">{{ edu.period }}</p>
+
+                            <a v-if="edu.link" :href="edu.link" target="_blank" rel="noopener noreferrer"
+                                class="document-link">
+                                {{ edu.linkLabel }}
+                                <span aria-hidden="true">↗</span>
+                            </a>
                         </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section interests-section">
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+                    <div>
+                        <h2>Interests</h2>
+                        <p class="section-subtitle">
+                            Topics that inspire me to keep exploring.
+                        </p>
                     </div>
                 </div>
 
-
-                <div class="section">
-                    <h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
-                        </svg>
-                        Skills & Technologies
-                    </h2>
-                    <div class="skills-grid">
-                        <div v-for="skill in skills" :key="skill.name" class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">{{ skill.name }}</span>
-                                <span class="skill-percentage">{{ skill.level }}%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" :style="{ width: skill.level + '%' }"></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="interests-list">
+                    <span v-for="interest in interests" :key="interest" class="interest-tag">
+                        {{ interest }}
+                    </span>
                 </div>
-
-
-                <div class="section">
-                    <h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                        </svg>
-                        Interests
-                    </h2>
-                    <div class="interests-grid">
-                        <span v-for="interest in interests" :key="interest" class="interest-tag">
-                            {{ interest }}
-                        </span>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
-    </section>
+    </main>
 </template>
 
 <style scoped>
 .about {
     min-height: 100vh;
-    padding: 3rem 2rem 2rem;
-    color: #f5f6f7;
-    background: linear-gradient(to bottom, #1C0B2B 0%, #121212 100%);
+    padding: 4rem 2rem;
+    background: #f4f1de;
+    color: #292820;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1050px;
     margin: 0 auto;
-    padding-top: 5rem;
 }
 
-.back-button-top {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    padding: 0.75rem 1.5rem;
-    color: #f5f6f7;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 500;
-    background: rgba(188, 84, 233, 0.1);
-    border: 1px solid rgba(188, 84, 233, 0.3);
-    transition: all 0.3s;
+.page-heading {
+    margin-bottom: 2.5rem;
 }
 
-.back-button-top:hover {
-    background: rgba(188, 84, 233, 0.2);
-    border-color: #BC54E9;
+.eyebrow {
+    margin: 0 0 0.8rem;
+    color: #b85f4b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
 }
 
-.hero-section {
+.page-heading h1 {
+    margin: 1rem;
+    font-size: clamp(2.8rem, 6vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.page-heading h1 span {
+    color: #c96851;
+}
+
+.profile {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 290px minmax(0, 1fr);
+    align-items: center;
     gap: 3rem;
     margin-bottom: 4rem;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(188, 84, 233, 0.2);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
+}
+
+.about-photo {
+    padding: 9px;
+    background: #e8dfca;
+    border-radius: 150px 150px 10px 10px;
+    box-shadow: 9px 9px 0 #e8c4b3;
 }
 
 .about-photo img {
+    display: block;
     width: 100%;
-    height: 300px;
-    border-radius: 12px;
+    height: 350px;
     object-fit: cover;
-    border: 3px solid #BC54E9;
+    object-position: center 30%;
+    border-radius: 145px 145px 5px 5px;
 }
 
-.hero-text h1 {
-    font-size: 3rem;
-    margin: 0 0 1.5rem 0;
-    color: #BC54E9;
+.hero-text {
+    max-width: 620px;
+}
+
+.intro-label {
+    margin: 0 0 0.8rem;
+    color: #b85f4b;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.hero-text h2 {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    line-height: 1.25;
+    letter-spacing: -0.8px;
+}
+
+.hero-text h2 span {
+    color: #c96851;
 }
 
 .intro {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #d0d0d0;
-    margin-bottom: 1rem;
-}
-
-.sections {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    margin: 0 0 1rem;
+    color: #68665d;
+    font-size: 1rem;
+    line-height: 1.85;
 }
 
 .section {
+    margin-top: 2rem;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(188, 84, 233, 0.2);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
+    background: #fffdf6;
+    border: 1px solid #e5deca;
+    border-radius: 12px;
 }
 
-.section h2 {
+.section-heading {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.8rem;
-    margin: 0 0 1.5rem 0;
-    color: #BC54E9;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+.section-number {
+    padding-top: 0.35rem;
+    color: #c96851;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-.skill-item {
-    padding: 1rem;
+.section-heading h2 {
+    margin: 0;
+    font-size: 1.7rem;
+    letter-spacing: -0.5px;
 }
 
-.skill-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-.skill-name {
-    font-weight: 600;
-    color: #f5f6f7;
-}
-
-.skill-percentage {
-    color: #BC54E9;
-    font-weight: 600;
-}
-
-.skill-bar {
-    height: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.skill-progress {
-    height: 100%;
-    background: linear-gradient(90deg, #BC54E9, #d4a1c3);
-    border-radius: 10px;
-    transition: width 1s ease;
+.section-subtitle {
+    margin: 0.45rem 0 0;
+    color: #777368;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .education-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.75rem;
 }
 
 .education-item {
-    padding: 1.5rem;
-    background: rgba(188, 84, 233, 0.05);
-    border-left: 4px solid #BC54E9;
-    border-radius: 8px;
-}
-
-.education-item h3 {
-    font-size: 1.4rem;
-    margin: 0 0 0.5rem 0;
-    color: #f5f6f7;
-}
-
-.institution {
-    font-size: 1.1rem;
-    color: #d0d0d0;
-    margin: 0.25rem 0;
-}
-
-.period {
-    color: #BC54E9;
-    font-weight: 600;
-    margin: 0.5rem 0 0 0;
-}
-
-.interests-grid {
     display: flex;
-    flex-wrap: wrap;
+    align-items: flex-start;
     gap: 1rem;
 }
 
+.education-marker {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: #f3e5dc;
+    border-radius: 8px;
+    color: #984d3b;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.education-content {
+    min-width: 0;
+}
+
+.period {
+    margin: 0 0 0.35rem;
+    color: #b85f4b;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.education-content h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.institution {
+    margin: 0;
+    color: #68665d;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.document-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    color: #ad523e;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.document-link:hover {
+    color: #823c2d;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.interests-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
 .interest-tag {
-    padding: 0.75rem 1.5rem;
-    background: rgba(188, 84, 233, 0.2);
-    border: 1px solid rgba(188, 84, 233, 0.4);
-    border-radius: 25px;
-    font-size: 1rem;
-    color: #e0b3f5;
-    transition: all 0.3s;
+    padding: 0.65rem 1rem;
+    background: #f6eee5;
+    border: 1px solid #ead9ca;
+    border-radius: 6px;
+    color: #755247;
+    font-size: 0.9rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .interest-tag:hover {
-    background: rgba(188, 84, 233, 0.3);
-    border-color: #BC54E9;
-    transform: translateY(-2px);
+    background: #f3e5dc;
+    border-color: #dba08e;
 }
 
-@media (max-width: 968px) {
-    .hero-section {
+@media (max-width: 760px) {
+    .about {
+        padding: 3rem 1.25rem;
+    }
+
+    .page-heading {
+        margin-bottom: 2rem;
+    }
+
+    .profile {
         grid-template-columns: 1fr;
-        text-align: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .about-photo {
+        width: min(250px, 80%);
+        margin: 0 auto;
     }
 
     .about-photo img {
-        margin: 0 auto;
-        max-width: 300px;
+        height: 300px;
     }
 
-    .hero-text h1 {
-        font-size: 2.2rem;
+    .hero-text h2 {
+        font-size: 2rem;
     }
 
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .about {
-        padding: 1rem;
-    }
-
-    .hero-section,
     .section {
-        padding: 1.5rem;
+        padding: 1.4rem;
     }
 
-    .section h2 {
+    .section-heading h2 {
         font-size: 1.5rem;
     }
 
-    .interests-grid {
-        justify-content: center;
+    .education-item {
+        gap: 0.75rem;
+    }
+
+    .education-content h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .document-link,
+    .interest-tag {
+        transition: none;
     }
 }
 </style>

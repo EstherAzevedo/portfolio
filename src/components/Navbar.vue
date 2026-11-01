@@ -56,7 +56,7 @@ function closeMenu() {
     left: 0;
     width: 100%;
     backdrop-filter: blur(12px);
-    background: rgba(18, 18, 18, 0.6);
+    background: #cc7a5b;
     border-bottom: 1px solid rgba(188, 84, 233, 0.15);
     z-index: 1000;
 }
@@ -77,7 +77,7 @@ function closeMenu() {
 }
 
 .nav-item {
-    color: #d0d0d0;
+    color: #384d48;
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -90,7 +90,7 @@ function closeMenu() {
     left: 0;
     width: 0;
     height: 2px;
-    background: #BC54E9;
+    background: #384d48;
     transition: width 0.3s ease;
 }
 
@@ -102,8 +102,8 @@ function closeMenu() {
 .nav-btn {
     padding: 0.5rem 1.2rem;
     border-radius: 10px;
-    background: #BC54E9;
-    color: #fff;
+    background: #c1d7bf;
+    color: #384d48;
     text-decoration: none;
     font-weight: 600;
 }
@@ -152,7 +152,7 @@ function closeMenu() {
 
     .mobile-btn {
         margin-top: 1rem;
-        background: #BC54E9;
+        background: #384d48;
         padding: 0.75rem;
         text-align: center;
         border-radius: 10px;
